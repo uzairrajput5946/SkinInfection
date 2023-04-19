@@ -1,4 +1,5 @@
 model/
+classifier/aug/
 
 # Logs
 logs
