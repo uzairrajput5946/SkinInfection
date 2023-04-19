@@ -5,10 +5,9 @@ const multer = require('multer');
 const mysql = require('mysql');
 
 var con = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "111",
-    port: 4406,
+    host: "primarydb.cddu5kqpfumb.us-east-2.rds.amazonaws.com",
+    user: "admin",
+    password: "YsjHdhn4YZ2Ovdha5ztb",
     database: "mydb"
 });
 
@@ -72,14 +71,14 @@ app.post('/upload_image', async (req, res) => {
 
   console.log(json)
 
-  var response1 = await runQuery("insert into users values ('"+req.body.image+"','"+json.class+"');")
+  var response1 = await runQuery("insert into images values ('"+req.body.image+"','"+json.class+"');")
   res.status(200).send({
     'message' : 'Image uploaded',
     'result': json.class
   });
 })
 
-var server = app.listen(3000, '66.71.52.154', () => {
+var server = app.listen(3000, () => {
   var host = server.address().address
   var port = server.address().port
   console.log("Example app listening at http://%s:%s", host, port)
