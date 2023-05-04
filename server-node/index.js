@@ -36,26 +36,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-// var storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, 'uploadedFiles/')
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, file.originalname)
-//     }
-// })
-//create multer instance
-// var upload = multer({ storage: storage })
-
 app.get('/', function (req, res) {
   res.send('Skin Infection')
 });
-
-// app.post('/uploadImage', upload.single('filetoupload'), function (req, res, next) {  
-//     console.log(req.body.description);  
-//     runQuery("select * from users");
-//     res.status(200).send({'message' : "file uploaded"});
-//   });
 
 app.post('/upload_image', async (req, res) => {
   const response = await fetch('http://66.71.52.154:3001/classify_image', {
@@ -78,7 +61,7 @@ app.post('/upload_image', async (req, res) => {
   });
 })
 
-var server = app.listen(3000, () => {
+var server = app.listen(3000, "66.71.52.154", () => {
   var host = server.address().address
   var port = server.address().port
   console.log("Example app listening at http://%s:%s", host, port)
